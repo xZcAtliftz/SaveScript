@@ -3216,6 +3216,19 @@ page:Toggle("Fast Attack", _G.FastAttack, function(vu)
     _G.FastAttack = vu
 end)
 
+page:Toggle("Removed Fast Attack sound.",nil,function(d)
+    _G.DeleteAttackFx = d
+    if _G.DeleteAttackFx == true then
+    while _G.DeleteAttackFx do wait()
+        for i, v in pairs(game.Workspace["_WorldOrigin"]:GetChildren()) do
+            if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "SwordSlash" or v.Name == "Sounds" then
+                v:Destroy() 
+            end
+        end
+    end
+end
+end)
+
 if OldWorld then
 	page:Toggle("Auto New World", _G.AutoNewworld, function(vu)
 		Auto_Newworld = vu
