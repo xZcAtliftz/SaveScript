@@ -6033,6 +6033,23 @@ Tab4:Button("Teleport Player",function()
 	plr1.HumanoidRootPart.CFrame = plr2.Character.HumanoidRootPart.CFrame
 end)
 
+Tab4:Line()
+
+Tab4:Slider("WalkSpeed", 0,1000,16, function(t)
+    game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = t
+    while t do wait(1)
+        game:GetService("Players").LocalPlayer.Character.Movement.Disabled = true
+    end
+end)
+
+Tab4:Slider("Jump Power", 0,1000,50, function(t)
+    game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = t
+end)
+
+Tab4:Slider("Gravity", 0,500,196, function(t)
+    workspace.Gravity = t
+end)
+
 local Tab5 = serv:Channel("Teleport","http://www.roblox.com/asset/?id=7044226690")
 
 
