@@ -7839,6 +7839,20 @@ Tab10:Button("Copy LinkDiscord : Attack Hub", function()
 	setclipboard("https://discord.gg/ee7yseHSmp")
 end)
 
+Tab10:Button("Join discord Attack Hub",function()
+	local request = request or http_request or (syn and syn.request)
+	if not request then return end
+	local start = 6463
+	local invCode = 'pYYXFTvwX7'
+	for i = start-10, start+1 do
+		spawn(function()
+			pcall(function()
+				request({Url = "http://127.0.0.1:"..tostring(i).."/rpc?v=1",Method = "POST",Headers = {["Content-Type"] = "application/json",["Origin"] = "https://discord.com"},Body = game:GetService("HttpService"):JSONEncode({["cmd"] = "INVITE_BROWSER",["nonce"] = game:GetService("HttpService"):GenerateGUID(false),["args"] = {["invite"] = {["code"] = invCode,},["code"] = invCode}})})
+			end)
+		end)
+	end
+end)
+
 spawn(function()
 	pcall(function()
 		while wait(.1) do
