@@ -3193,23 +3193,29 @@ spawn(function()
 	end)
 end)
 
-local RigC = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
-local Cemara = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework.CameraShaker)
-    function a()
-    Cemara.CameraShakeInstance.CameraShakeState = {FadingIn = 3, FadingOut = 2, Sustained = 0, Inactive = 1}
-    RigC.activeController.timeToNextAttack = tick() -1
-    RigC.activeController.attacking = false
-    RigC.activeController.hitboxMagnitude = 70
-    RigC.activeController.increment = 3
-    RigC.activeController:attack()
-end
-game:GetService("RunService").RenderStepped:Connect(function()
-    if _G.FastAttack then
-        pcall(function()
-            a()
+local kkii = require(game.ReplicatedStorage.Util.CameraShaker)
+local Controller = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework).activeController
+local cd = 0.1
+spawn(function()
+    for i = 1,5 do
+        game:GetService('RunService').Stepped:connect(function()
+            for i = 1,5 do
+                kkii:Stop()
+                if _G.FastAttack then
+                    pcall(function()
+                        if RigC.activeController then
+                            RigC.activeController.timeToNextAttack = -(math.huge ^ math.huge ^ math.huge)
+                            RigC.activeController.increment = 3
+                            RigC.activeController.attacking = false
+                            RigC.activeController.hitboxMagnitude = 50
+                        end 
+                    end)
+                end
+            end
         end)
     end
 end)
+
 
 _G.FastAttack = true
 page:Toggle("Fast Attack", _G.FastAttack, function(vu)
