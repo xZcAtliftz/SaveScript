@@ -7151,6 +7151,22 @@ Fire.Size = 2
 
 end)
 
+Tab8:Toggle("Xray",false, function(t)
+	if t then
+		for i,v in pairs(workspace:GetDescendants()) do
+			if v:IsA("BasePart") and not v.Parent.Parent:FindFirstChild("Humanoid") then
+				v.Transparency = v.Transparency + 0.5
+			end
+		end
+	else
+		for i,v in pairs(workspace:GetDescendants()) do
+			if v:IsA("BasePart") and not v.Parent.Parent:FindFirstChild("Humanoid") then
+				v.Transparency = v.Transparency - 0.5
+			end
+		end
+	end
+end)
+
 Tab8:Toggle("Inf Geppo",false,function(value)
 	if value == true then
 	   game.Players.LocalPlayer.Backpack.GeppoNew.cds.Value = 1000000000000000000
