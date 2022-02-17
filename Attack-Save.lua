@@ -3101,6 +3101,29 @@ spawn(function()
 	end)
 end)
 
+page:Toggle("Auto Equip Melee[ For Kaitan ]", _G.EquipMelee, function(vu)
+    _G.EquipMelee = vu
+end)
+
+spawn(function()
+	while wait() do
+	if _G.EquipMelee then
+		pcall(function()
+			for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+			   if v.ToolTip == "Melee" then
+			  if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+				  local ToolSe = tostring(v.Name)
+				 local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
+				 wait(.4)
+				 game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
+			  end
+			   end
+			end
+		end)
+	end
+	end
+	end)
+
 spawn(function()
 	game:GetService("RunService").Heartbeat:Connect(function()
 		if _G.AutoFarmtp then
@@ -3147,8 +3170,6 @@ spawn(function()
 		end
 	end
 end)
-
-
 
 spawn(function()
 	game:GetService("RunService").Heartbeat:connect(function()
