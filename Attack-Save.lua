@@ -3245,6 +3245,34 @@ page:Toggle("Fast Attack", _G.FastAttack, function(vu)
     _G.FastAttack = vu
 end)
 
+_G.FastAttack2 = true
+page:Toggle("Fast Attack [ x 2 ]", _G.FastAttack2, function(vu)
+    _G.FastAttack2 = vu
+end)
+
+local kkii = require(game.ReplicatedStorage.Util.CameraShaker)
+local Controller = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework).activeController
+local cd = 0.1
+spawn(function()
+    for i = 1,5 do
+        game:GetService('RunService').Stepped:connect(function()
+            for i = 1,5 do
+                kkii:Stop()
+                if _G.FastAttack2 then
+                    pcall(function()
+                        if RigC.activeController then
+                            RigC.activeController.timeToNextAttack = -(math.huge ^ math.huge ^ math.huge)
+                            RigC.activeController.increment = 3
+                            RigC.activeController.attacking = false
+                            RigC.activeController.hitboxMagnitude = 50
+                        end 
+                    end)
+                end
+            end
+        end)
+    end
+end)
+
 page:Toggle("Removed Fast Attack sound.",nil,function(d)
     _G.DeleteAttackFx = d
     if _G.DeleteAttackFx == true then
