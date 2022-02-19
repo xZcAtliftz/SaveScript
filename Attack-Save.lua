@@ -6166,23 +6166,6 @@ Tab4:Button("Teleport Player",function()
 	plr1.HumanoidRootPart.CFrame = plr2.Character.HumanoidRootPart.CFrame
 end)
 
-Tab4:Line()
-
-Tab4:Slider("WalkSpeed", 0,1000,16, function(t)
-    game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = t
-    while t do wait(1)
-        game:GetService("Players").LocalPlayer.Character.Movement.Disabled = true
-    end
-end)
-
-Tab4:Slider("Jump Power", 0,1000,50, function(t)
-    game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = t
-end)
-
-Tab4:Slider("Gravity", 0,500,196, function(t)
-    workspace.Gravity = t
-end)
-
 local Tab5 = serv:Channel("Teleport","http://www.roblox.com/asset/?id=7044226690")
 
 
@@ -7793,7 +7776,7 @@ spawn(function()
 	end
 end)
 
-Tab9:Toggle("BringMob [ BUG ]", false, function(value)
+Tab9:Toggle("BringMob", true, function(value)
     Magnet = value
 end)
 
@@ -7812,6 +7795,24 @@ end)
 
 Tab9:Slider("Level Lock", 1,2200,_G.LevelMax, function(value)
 	LevelLock = value
+end)
+
+
+Tab9:Line()
+
+Tab9:Slider("WalkSpeed", 0,1000,16, function(t)
+    game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = t
+    while t do wait(1)
+        game:GetService("Players").LocalPlayer.Character.Movement.Disabled = true
+    end
+end)
+
+Tab9:Slider("Jump Power", 0,1000,50, function(t)
+    game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = t
+end)
+
+Tab9:Slider("Gravity", 0,500,196, function(t)
+    workspace.Gravity = t
 end)
 
 local Tab11 = serv:Channel("Music","http://www.roblox.com/asset/?id=7040410130")
