@@ -3126,6 +3126,84 @@ spawn(function()
 	end
 	end)
 
+    function bring1()
+        local plr = game.Players.LocalPlayer
+        pcall(function()
+            sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+        end)
+    end
+    spawn(function()
+        while wait(.1) do
+            if _G.AutoFarm then
+                bring1()
+            end
+        end
+    end)
+    local RigC = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework) 
+    local VirtualUser = game:GetService('VirtualUser')
+    local kkii = require(game.ReplicatedStorage.Util.CameraShaker)
+    spawn(function()
+        while game:GetService("RunService").RenderStepped:wait() do
+            if _G.AutoFarm then
+                pcall(function()
+                 RigC.activeController.timeToNextAttack = 0
+                 RigC.activeController.attacking = false
+                 RigC.activeController.blocking = false
+                 RigC.activeController.timeToNextAttack = 0
+                 RigC.activeController.timeToNextBlock = 0
+                 RigC.activeController.increment = 3
+                 RigC.activeController.hitboxMagnitude = 100
+                 game.Players.LocalPlayer.Character.Stun.Value = 0
+                 game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                 kkii:Stop()
+                end)
+            end
+        end
+    end)
+    
+    spawn(function()
+        game:GetService("RunService").Heartbeat:connect(function()
+            if _G.AutoFarm then
+                for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if v.Name == Ms and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                        v.Humanoid:ChangeState(11)
+                    end
+                end
+            end
+        end)
+    end)
+    
+    spawn(function()
+        game:GetService("RunService").Heartbeat:connect(function()
+            if _G.AutoFarm and StatrMagnet and Magnet then
+                CheckQuest()
+                for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if v.Name == Ms and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                        if v.Name == "Factory Staff [Lv. 800]" or v.Name == "Dragon Crew Warrior [Lv. 1575]" or v.Name == "Dragon Crew Archer [Lv. 1600]" and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 200 then
+                            if HideHitBlox then
+                                v.HumanoidRootPart.Transparency = 1
+                            else
+                                v.HumanoidRootPart.Transparency = 70
+                            end
+                            v.HumanoidRootPart.CanCollide = false
+                            v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                            v.HumanoidRootPart.CFrame = PosMon
+                        elseif v.Name == Ms and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 400 then
+                            if HideHitBlox then
+                                v.HumanoidRootPart.Transparency = 1
+                            else
+                                v.HumanoidRootPart.Transparency = 70
+                            end
+                            v.HumanoidRootPart.CanCollide = false
+                            v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                            v.HumanoidRootPart.CFrame = PosMon
+                        end
+                    end
+                end
+            end 
+        end)
+    end)
+
 spawn(function()
 	game:GetService("RunService").Heartbeat:Connect(function()
 		if _G.AutoFarmtp then
@@ -4144,16 +4222,14 @@ end
 
 spawn(function()
     pcall(function()
-       game:GetService("RunService").Heartbeat:Connect(function()
-        if Clip or _G.AutoFarmtp or _G.AutoFarm or AutoYama or Auto_Bone or _G.AutoFarmObservation or ReadyThirdSea or _G.FramBoss or _G.FarmLevel or Auto_Newworld or AutoRainbow or _G.AutoSwan or AutoRengoku or _G.AutoPole or NextIsland or _G.AutoHakiRainbow or _G.AutoFastAttack or _G.AutoEliteHunter or _G.AutoEliteHunterHop or _G.AutoTushitaSword or _G.AutoTushitaSword or  _G.FramBoss or _G.AutoFarmAllBoss or _G.AutoCavender or _G.AutoCavenderHop or _G.Tween then
-          if not game:GetService("Workspace"):FindFirstChild("LOL") then
-             local Paertaiteen = Instance.new("Part")
-             Paertaiteen.Name = "LOL"
-             Paertaiteen.Parent = game.Workspace
-             Paertaiteen.Anchored = true
-             Paertaiteen.Transparency = 0
-             Paertaiteen.Size = Vector3.new(10,0.5,10)
-             Paertaiteen.Material = "Neon"
+        game:GetService("RunService").Heartbeat:Connect(function()
+            if Noclip then
+                if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                    local Noclip = Instance.new("BodyVelocity")
+                    Noclip.Name = "BodyClip"
+                    Noclip.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+                    Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                    Noclip.Velocity = Vector3.new(0,0,0)
              while true do 
                  wait(0.1) 
                  game:GetService('TweenService'):Create(
@@ -7425,6 +7501,26 @@ Tab8:Toggle("Fly", false, function(vu)
    Fly = vu
    activatefly()
 end)
+
+Tab8:Toggle("Noclip", false, function(vu)
+    Noclip = vu
+ end)
+ spawn(function()
+    pcall(function()
+        game:GetService("RunService").Heartbeat:Connect(function()
+            if Noclip then
+                if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                    local Noclip = Instance.new("BodyVelocity")
+                    Noclip.Name = "BodyClip"
+                    Noclip.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+                    Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                    Noclip.Velocity = Vector3.new(0,0,0)
+                end
+            end
+        end)
+    end)
+end)
+
 
 Tab8:Label("Server")
 
