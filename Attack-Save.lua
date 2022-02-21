@@ -1,4 +1,128 @@
--- Premium Script
+--Loader
+
+local CCOpeningScreen = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local CocoLogo = Instance.new("ImageLabel")
+local T1 = Instance.new("TextLabel")
+local T2 = Instance.new("TextLabel")
+local T3 = Instance.new("TextLabel")
+local LoadBar = Instance.new("Frame")
+
+CCOpeningScreen.Name = "CCOpeningScreen"
+CCOpeningScreen.Parent = game.CoreGui
+CCOpeningScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = CCOpeningScreen
+MainFrame.Active = true
+MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+MainFrame.BorderSizePixel = 0
+MainFrame.ClipsDescendants = true
+MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+MainFrame.Selectable = true
+MainFrame.Size = UDim2.new(0, 0, 0, 158)
+
+CocoLogo.Name = "CocoLogo"
+CocoLogo.Parent = MainFrame
+CocoLogo.AnchorPoint = Vector2.new(0.5, 0.5)
+CocoLogo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CocoLogo.BackgroundTransparency = 1.000
+CocoLogo.BorderSizePixel = 0
+CocoLogo.ClipsDescendants = true
+CocoLogo.Position = UDim2.new(0.255176783, 0, 0.49999997, 0)
+CocoLogo.Size = UDim2.new(0, 86, 0, 86)
+CocoLogo.Image = "http://www.roblox.com/asset/?id=8636315346"
+
+T1.Name = "T1"
+T1.Parent = MainFrame
+T1.AnchorPoint = Vector2.new(0.5, 0.5)
+T1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+T1.BackgroundTransparency = 1.000
+T1.BorderSizePixel = 0
+T1.Position = UDim2.new(0.646776021, 0, 0.407925308, 0)
+T1.Size = UDim2.new(0, 144, 0, 13)
+T1.Font = Enum.Font.Gotham
+T1.Text = "Welcome To"
+T1.TextColor3 = Color3.fromRGB(255, 255, 255)
+T1.TextScaled = true
+T1.TextSize = 14.000
+T1.TextWrapped = true
+T1.TextXAlignment = Enum.TextXAlignment.Left
+
+T2.Name = "T2"
+T2.Parent = MainFrame
+T2.AnchorPoint = Vector2.new(0.5, 0.5)
+T2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+T2.BackgroundTransparency = 1.000
+T2.BorderSizePixel = 0
+T2.Position = UDim2.new(0.646776021, 0, 0.538823366, 0)
+T2.Size = UDim2.new(0, 144, 0, 28)
+T2.Font = Enum.Font.GothamBold
+T2.Text = "Attack Hub!"
+T2.TextColor3 = Color3.fromRGB(255, 255, 255)
+T2.TextScaled = true
+T2.TextSize = 14.000
+T2.TextWrapped = true
+T2.TextXAlignment = Enum.TextXAlignment.Left
+
+T3.Name = "T3"
+T3.Parent = MainFrame
+T3.AnchorPoint = Vector2.new(0.5, 0.5)
+T3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+T3.BackgroundTransparency = 1.000
+T3.BorderSizePixel = 0
+T3.Position = UDim2.new(0.5, 0, 0.885999978, 0)
+T3.Size = UDim2.new(1, 0, 0, 10)
+T3.Font = Enum.Font.Gotham
+T3.Text = ""
+T3.TextColor3 = Color3.fromRGB(255, 255, 255)
+T3.TextScaled = true
+T3.TextSize = 14.000
+T3.TextWrapped = true
+
+LoadBar.Name = "LoadBar"
+LoadBar.Parent = MainFrame
+LoadBar.Active = true
+LoadBar.AnchorPoint = Vector2.new(0, 0.5)
+LoadBar.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+LoadBar.BorderSizePixel = 0
+LoadBar.ClipsDescendants = true
+LoadBar.Position = UDim2.new(0, 0, 0.977999985, 0)
+LoadBar.Selectable = true
+LoadBar.Size = UDim2.new(0, 0, 0, 7)
+
+--Loader
+
+local function MNQEF_fake_script()
+	local script = Instance.new('LocalScript', MainFrame)
+
+	wait(1)
+	script.Parent:TweenSize(UDim2.new(0,310,0,158), "Out", "Quad", 0.5, true)
+	wait(1)
+	script.Parent.LoadBar:TweenSize(UDim2.new(0.1,0,0,7), "Out", "Quad", 0.5, true)
+	script.Parent.T3.Text = "Wondering why this useless loading screen exists..."
+	wait(1)
+	script.Parent.LoadBar:TweenSize(UDim2.new(0.50,0,0,7), "Out", "Quad", 0.5, true)
+	script.Parent.T3.Text = "Getting the Loadstring (Why is there a loading screen then?)"
+	wait(1)
+	script.Parent.LoadBar:TweenSize(UDim2.new(1,0,0,7), "Out", "Quad", 0.5, true)
+	script.Parent.T3.Text = "Done, Welcome to Attack Hub by xZcAtliftz."
+	wait(1.5)
+	script.Parent:TweenSize(UDim2.new(0,0,0,158), "Out", "Quad", 0.5, true)
+	wait(0.5)
+
+    
+
+
+
+    --Script  ภายใน ข้างบน คือ Loader
+
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Credit";
+        Text = "Attack Hub Free Script";
+        })
+
 repeat wait() until game:IsLoaded()
 
 if _G.Team == "Pirate" then
@@ -6160,10 +6284,41 @@ Tab4:Toggle("Spectate Player",false,function(bool)
 	until Sp == false 
 	game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
 end)
+
+Tab4:Button("Click Tp Tool",function()
+	mouse = game.Players.LocalPlayer:GetMouse()
+	tool = Instance.new("Tool")
+	tool.RequiresHandle = false
+	tool.Name = "Click Teleport"
+	tool.Activated:connect(function()
+	local pos = mouse.Hit+Vector3.new(0,2.5,0)
+	pos = CFrame.new(pos.X,pos.Y,pos.Z)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+	end)
+	tool.Parent = game.Players.LocalPlayer.Backpack
+end)
+
 Tab4:Button("Teleport Player",function()
 	local plr1 = game.Players.LocalPlayer.Character
 	local plr2 = game.Players:FindFirstChild(SelectedKillPlayer)
 	plr1.HumanoidRootPart.CFrame = plr2.Character.HumanoidRootPart.CFrame
+end)
+
+Tab4:Line()
+
+Tab4:Slider("WalkSpeed", 0,1000,16, function(t)
+    game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = t
+    while t do wait(1)
+        game:GetService("Players").LocalPlayer.Character.Movement.Disabled = true
+    end
+end)
+
+Tab4:Slider("Jump Power", 0,1000,50, function(t)
+    game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = t
+end)
+
+Tab4:Slider("Gravity", 0,500,196, function(t)
+    workspace.Gravity = t
 end)
 
 local Tab5 = serv:Channel("Teleport","http://www.roblox.com/asset/?id=7044226690")
@@ -7776,7 +7931,7 @@ spawn(function()
 	end
 end)
 
-Tab9:Toggle("BringMob", true, function(value)
+Tab9:Toggle("BringMob [ BUG ]", false, function(value)
     Magnet = value
 end)
 
@@ -7795,24 +7950,6 @@ end)
 
 Tab9:Slider("Level Lock", 1,2200,_G.LevelMax, function(value)
 	LevelLock = value
-end)
-
-
-Tab9:Line()
-
-Tab9:Slider("WalkSpeed", 0,1000,16, function(t)
-    game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = t
-    while t do wait(1)
-        game:GetService("Players").LocalPlayer.Character.Movement.Disabled = true
-    end
-end)
-
-Tab9:Slider("Jump Power", 0,1000,50, function(t)
-    game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = t
-end)
-
-Tab9:Slider("Gravity", 0,500,196, function(t)
-    workspace.Gravity = t
 end)
 
 local Tab11 = serv:Channel("Music","http://www.roblox.com/asset/?id=7040410130")
@@ -8031,3 +8168,5 @@ spawn(function()
 		end
 	end)
 end)
+end
+coroutine.wrap(MNQEF_fake_script)()
