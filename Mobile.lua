@@ -1,54 +1,31 @@
-if game:GetService("CoreGui"):FindFirstChild("Attack Hub [ Blox Fruit ]") then
-    game:GetService("CoreGui"):FindFirstChild("Attack Hub [ Blox Fruit ]"):Destroy()
-end
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("ImageLabel")
-local TextLabel = Instance.new("TextLabel")
-local TextLabel_2 = Instance.new("TextLabel")
-local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Patskorn/GUI/main/Copy-SynapOver.lua"))()
 
---Properties:
 
-ScreenGui.Parent = game.CoreGui
-    
-Frame.Name = "Frame"
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.BackgroundTransparency = 1.000
-Frame.Position = UDim2.new(-0.185944349, 0, -0.268488735, 0)
-Frame.Size = UDim2.new(0, 2090, 0, 1037)
-Frame.Image = "rbxassetid://3570695787"
-Frame.ImageColor3 = Color3.fromRGB(52, 52, 52)
-Frame.ScaleType = Enum.ScaleType.Slice
-Frame.SliceCenter = Rect.new(100, 100, 100, 100)
-Frame.SliceScale = 0.120
+local DINOHUB = Instance.new("ScreenGui")
+local OPENCLOSE = Instance.new("TextButton")
 
-TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.Position = UDim2.new(0.271887034, 0, 0.289087892, 0)
-TextLabel.Size = UDim2.new(0, 716, 0, 136)
-TextLabel.Font = Enum.Font.SpecialElite
-TextLabel.Text = "SCRIPT FREE-Attack HUB"
-TextLabel.TextColor3 = Color3.fromRGB(255, 46, 74)
-TextLabel.TextSize = 100.000
-TextLabel.TextStrokeTransparency = 0.000
 
-TextLabel_2.Parent = Frame
-TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.BackgroundTransparency = 1.000
-TextLabel_2.Position = UDim2.new(0.391970098, 0, 0.576715112, 0)
-TextLabel_2.Size = UDim2.new(0, 234, 0, 136)
-TextLabel_2.Font = Enum.Font.SpecialElite
-TextLabel_2.Text = "ENJOIN THE SCRIPT"
-TextLabel_2.TextColor3 = Color3.fromRGB(255, 46, 74)
-TextLabel_2.TextSize = 70.000
-TextLabel_2.TextStrokeTransparency = 0.000
+DINOHUB.Name = "AT Hub"
+DINOHUB.Parent = game.CoreGui
+DINOHUB.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-UIAspectRatioConstraint.Parent = ImageLabel
-UIAspectRatioConstraint.AspectRatio = 2.644
-wait(3)
-game.CoreGui:FindFirstChild("ScreenGui"):Destroy()
+OPENCLOSE.Name = "OPENCLOSE"
+OPENCLOSE.Parent = DINOHUB
+OPENCLOSE.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+OPENCLOSE.BorderSizePixel = 0
+OPENCLOSE.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+OPENCLOSE.Size = UDim2.new(0.0447916649, 0, 0.0845824406, 0)
+OPENCLOSE.Font = Enum.Font.DenkOne
+OPENCLOSE.Text = "CLOSE"
+OPENCLOSE.TextColor3 = Color3.fromRGB(255, 255, 255)
+OPENCLOSE.TextScaled = true
+OPENCLOSE.TextSize = 14.000
+OPENCLOSE.TextWrapped = true
+OPENCLOSE.MouseButton1Click:Connect(function()
+    game.CoreGui:FindFirstChild("POUI").Enabled = not game.CoreGui:FindFirstChild("POUI").Enabled
+end)
+
+local GUI = library:new("Attack Hub","[ Mobile ]")
 
 local OldWorld = false
 local Sea2 = false
@@ -544,39 +521,10 @@ tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(30, Enu
 tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(workspace[NameMon].Position)})
 return tween
 end
--- init
-local library = loadstring(game:HttpGet("https://gist.githubusercontent.com/koio08199za/5121bfa15c12af9e0dc3ab23745213e5/raw/5e509dc9291b4250cec7f4af79d7c3229c9bac13/Test"))()
-local venyx = library.new("Attack Hub [ Blox Fruit ]", 5013109572)
 
--- themes
-local themes = {
-Glow = Color3.fromRGB(255, 0, 0),
-TextColor = Color3.fromRGB(255, 119, 0)
-}
+local Tab2 = GUI:Tap("Auto Farm")
 
-local page = venyx:addPage("Main", 6023426909)
-local section1 = page:addSection("Credit: xZcAtliftz")
-local section1 = page:addSection("Script : xZcAtliftz")
-local section1 = page:addSection("xZcAtliftz")
-section1:addButton("Copy Discord Server", function()
-setclipboard("https://discord.gg/zVcR79s8")
-end)
-section1:addButton("Copy Youtube", function()
-setclipboard("https://www.youtube.com/channel/UCbC3Pzbn4AjIzvTxVPhf1Hg")
-end)
-section1:addButton("Destroy GUI", function()
-local section1 = page:addSection("BITCH")
-    game:GetService("CoreGui"):FindFirstChild("FUCK YOU BITCH [ Blox Fruit ]"):Destroy()
-end)
-section1:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
-print("Activated Keybind")
-venyx:toggle()
-end, function()
-print("Changed Keybind")
-end)
-local page = venyx:addPage("Auto Farm", 7251993295)
-local section2 = page:addSection("Auto Farm")
-section2:addToggle("Bring Mob", false, function(value)
+Tab2:Toggle("Bring Mob", false, function(value)
 _G.bringmob = value
 while _G.bringmob do wait()
     pcall(function()
@@ -602,7 +550,7 @@ while _G.bringmob do wait()
     end)
 end
 end)
-section2:addToggle("Fast Attack", false, function(value)
+Tab2:Toggle("Fast Attack", false, function(value)
 _G.FastAttack = value
 end)
 
@@ -613,33 +561,7 @@ function itemequip(namex)
       game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
 end)
 end
-ToolName = {}
-for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-   if v:IsA("Tool") then
-      table.insert(ToolName, v.Name)
-   end
-end
-for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-   if v:IsA("Tool") then
-      table.insert(ToolName, v.Name)
-   end
-end
-section2:addDropdown("Select Weapo", ToolName, function(list)
-weapongg = list
-end)
-section2:addButton("Refresh Weapon", function()
-table.clear(ToolName)
-for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-   if v:IsA("Tool") then
-      table.insert(ToolName, v.Name)
-   end
-end
-for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-   if v:IsA("Tool") then
-      table.insert(ToolName, v.Name)
-   end
-end
-end)
+
 
 function tweenxd(Speed,Part)
     local Distance = (game.Workspace[Part].Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude -- จุดที่จะไป Position Only
@@ -658,7 +580,7 @@ tweenx = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character
 tweenx:Play()
 wait(Distancex/Speexd)
 end
-section2:addToggle("Auto Farm", false, function(value)
+Tab2:Toggle("Auto Farm", false, function(value)
 _G.AutoFarm = value
 while _G.AutoFarm do game:GetService("RunService").Heartbeat:wait()
    pcall(function()
@@ -788,7 +710,7 @@ function equipcombat(a)
       game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
    end
 end
-section2:addToggle("Auto Farm Mastery Fruit", false, function(value)
+Tab2:Toggle("Auto Farm Mastery Fruit", false, function(value)
 _G.AutoFarmMas = value
 while _G.AutoFarmMas do wait()
    pcall(function()
@@ -895,7 +817,7 @@ while _G.AutoFarmMas do wait()
    end)
 end
 end)
-section2:addToggle("Auto Farm Mastery Gun", false, function(value)
+Tab2:Toggle("Auto Farm Mastery Gun", false, function(value)
 _G.AutoFarmMasGun = value
 while _G.AutoFarmMasGun do wait()
    pcall(function()
@@ -997,7 +919,7 @@ if _G.farmmasfruit then
    game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
 end
 end)
-section2:addToggle("Auto Farm All Boss", false, function(value)
+Tab2:Toggle("Auto Farm All Boss", false, function(value)
 _G.AutoFarmAllBoss = value
 while _G.AutoFarmAllBoss do wait()
    pcall(function()
@@ -1030,6 +952,34 @@ while _G.AutoFarmAllBoss do wait()
 end
 end)
 
+ToolName = {}
+for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+   if v:IsA("Tool") then
+      table.insert(ToolName, v.Name)
+   end
+end
+for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+   if v:IsA("Tool") then
+      table.insert(ToolName, v.Name)
+   end
+end
+Tab2:Dropdown("Select Weapon", ToolName, function(list)
+weapongg = list
+end)
+Tab2:Button("Refresh Weapon", function()
+table.clear(ToolName)
+for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+   if v:IsA("Tool") then
+      table.insert(ToolName, v.Name)
+   end
+end
+for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+   if v:IsA("Tool") then
+      table.insert(ToolName, v.Name)
+   end
+end
+end)
+
 local LocalPlayer = game:GetService'Players'.LocalPlayer
 local originalstam = LocalPlayer.Character.Energy.Value
 function infinitestam()
@@ -1040,19 +990,43 @@ function infinitestam()
    end)
 end
 
+Tab2:Button("Redeem All Code", function()
+	function UseCode(Text)
+	 game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(Text)
+ end
+ UseCode("UPD16")
+ UseCode("2BILLION")
+ UseCode("UPD15")
+ UseCode("FUDD10")
+ UseCode("BIGNEWS")
+ UseCode("THEGREATACE")
+ UseCode("SUB2GAMERROBOT_EXP1")
+ UseCode("StrawHatMaine")
+ UseCode("Sub2OfficialNoobie")
+ UseCode("SUB2NOOBMASTER123")
+ UseCode("Sub2Daigrock")
+ UseCode("Axiore")
+ UseCode("TantaiGaming")
+ UseCode("STRAWHATMAINE") 
+ UseCode("3BVISITS") 
+ UseCode("Fudd10 ") 
+ UseCode("Fudd10_v2 ") 
+ UseCode("Bignews ") 
+ UseCode("TantaiGaming") 
+end)
 
-local page = venyx:addPage("Auto-Stats", 7252023075)
-local section3 = page:addSection("Auto Stat")
-section3:addToggle("Auto Stats Melee",false,function(value)
+
+local Tab3 = GUI:Tap("Auto Stats")
+Tab3:Toggle("Auto Stats Melee",false,function(value)
 _G.AutoMelee = value
 end)
-section3:addToggle("Auto Stats Defense",false,function(value)
+Tab3:Toggle("Auto Stats Defense",false,function(value)
 _G.AutoDefense = value
 end)
-section3:addToggle("Auto Stats Sword",false,function(value)
+Tab3:Toggle("Auto Stats Sword",false,function(value)
 _G.AutoSword = value
 end)
-section3:addToggle("Auto Stats Devil Fruit",false,function(value)
+Tab3:Toggle("Auto Stats Devil Fruit",false,function(value)
 _G.AutoFruit = value
 end)
 
@@ -1060,27 +1034,26 @@ function click()
    game:GetService'VirtualUser':CaptureController()
    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 end
-local page = venyx:addPage("Game", 7044284832)
-local Game1 = page:addSection("Game")
-Game1:addToggle("Auto Superhuman",false,function(value)
+local Tab4 = GUI:Tap("Game")
+Tab4:Toggle("Auto Superhuman",false,function(value)
     _G.Superhuman = value
     end)
-    Game1:addToggle("Auto DeathStep",false,function(value)
+    Tab4:Toggle("Auto DeathStep",false,function(value)
     _G.DeathStep = value
     end)
-    Game1:addToggle("Auto Electric Claw",false,function(value)
+    Tab4:Toggle("Auto Electric Claw",false,function(value)
     _G.Electro = value
     end)
-    Game1:addToggle("Auto Elite Hunter",false,function(value)
+    Tab4:Toggle("Auto Elite Hunter",false,function(value)
     _G.elitehunt = value
     end)
-    Game1:addToggle("Auto Buy Legendary Sword",false,function(value)
+    Tab4:Toggle("Auto Buy Legendary Sword",false,function(value)
     _G.BuySwordLegendary = value
     end)
-    Game1:addToggle("Auto Buy Haki Color",false,function(value)
+    Tab4:Toggle("Auto Buy Haki Color",false,function(value)
     _G.BuyHakiColorsDealer = value
     end)
-    Game1:addToggle("Auto Buy Random Bone",false,function(value)
+    Tab4:Toggle("Auto Buy Random Bone",false,function(value)
     _G.AutoBuyRandombone = value
     
     while _G.AutoBuyRandombone do wait()
@@ -1097,7 +1070,7 @@ Game1:addToggle("Auto Superhuman",false,function(value)
     end
     end)
     _G.done = false
-    Game1:addToggle("Auto HallowScythe",false,function(value)
+    Tab4:Toggle("Auto HallowScythe",false,function(value)
     _G.AutoFarmBossHallow = value
     while _G.AutoFarmBossHallow do wait()
        pcall(function()
@@ -1176,7 +1149,7 @@ Game1:addToggle("Auto Superhuman",false,function(value)
          "Revive-Revive",
          "Shadow-Shadow"
     }
-    Game1:addToggle("Auto Store Fruit All",false,function(value)
+    Tab4:Toggle("Auto Store Fruit All",false,function(value)
     _G.AutoStoreFruitAll = value
     while _G.AutoStoreFruitAll do wait()
         pcall(function()
@@ -1191,7 +1164,7 @@ Game1:addToggle("Auto Superhuman",false,function(value)
         end)
     end
     end)
-Game1:addToggle("Auto BuyFruit",false,function(value)
+    Tab4:Toggle("Auto BuyFruit",false,function(value)
 _G.autobuyfruit = value
 while _G.autobuyfruit do wait()
     local args = {
@@ -1202,15 +1175,16 @@ while _G.autobuyfruit do wait()
 wait(.1)
 end
 end)
-Game1:addButton("BuyFruit", function()
+Tab4:Button("BuyFruit", function()
 local args = {
     [1] = "Cousin",
     [2] = "Buy"
 }
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end)
-local Shop = page:addSection("Shop")
-Shop:addButton("DragonClaw", function()
+
+local Tab5 = GUI:Tap("Shop")
+Tab5:Button("DragonClaw", function()
 local args = {
     [1] = "BlackbeardReward",
     [2] = "DragonClaw",
@@ -1219,54 +1193,54 @@ local args = {
 
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end)
-Shop:addButton("BuySuperhuman", function()
+Tab5:Button("BuySuperhuman", function()
 local args = {
     [1] = "BuySuperhuman"
 }
 
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end)
-Shop:addButton("BuySharkmanKarate", function()
+Tab5:Button("BuySharkmanKarate", function()
 local args = {
     [1] = "BuySharkmanKarate"
 }
 
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end)
-Shop:addButton("BuyFishmanKarate", function()
+Tab5:Button("BuyFishmanKarate", function()
 local args = {
     [1] = "BuyFishmanKarate"
 }
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end)
-Shop:addButton("BuyElectro", function()
+Tab5:Button("BuyElectro", function()
 local args = {
     [1] = "BuyElectro"
 }
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end)
-Shop:addButton("BuyBlackLeg", function()
+Tab5:Button("BuyBlackLeg", function()
 local args = {
     [1] = "BuyBlackLeg"
 }
 
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end)
-Shop:addButton("BuyDeathStep", function()
+Tab5:Button("BuyDeathStep", function()
 local args = {
     [1] = "BuyDeathStep"
 }
 
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end)
-Shop:addButton("BuyElectricClaw", function()
+Tab5:Button("BuyElectricClaw", function()
 local args = {
     [1] = "BuyElectricClaw"
 }
 
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end)
-Shop:addButton("BuyDragonTalon", function()
+Tab5:Button("BuyDragonTalon", function()
 
 local args = {
     [1] = "BuyDragonTalon"
@@ -1274,15 +1248,15 @@ local args = {
 
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end)
-local Ab = page:addSection("Abilities")
-Ab:addButton("Geppo ",function()
+Tab5:Line()
+Tab5:Button("Geppo ",function()
 		local args = {
 			[1] = "BuyHaki",
 			[2] = "Geppo"
 		}
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 	end)
-	Ab:addButton("Buso Haki",function()
+	Tab5:Button("Buso Haki",function()
 		local args = {
 			[1] = "BuyHaki",
 			[2] = "Buso"
@@ -1290,14 +1264,14 @@ Ab:addButton("Geppo ",function()
 
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 	end)
-	Ab:addButton("Ken Haki",function()
+	Tab5:Button("Ken Haki",function()
 		local args = {
 			[1] = "KenTalk",
 			[2] = "Buy"
 		}
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 	end)
-	Ab:addButton("Soru",function()
+	Tab5:Button("Soru",function()
 		local args = {
 			[1] = "BuyHaki",
 			[2] = "Soru"
@@ -1305,17 +1279,65 @@ Ab:addButton("Geppo ",function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 	end)
 	
-	
-local page = venyx:addPage("Misc", 7040347038)
-local Misc = page:addSection("Misc")
-Misc:addToggle("Dodge No Cooldown",false,function(value)
+    local Misc = GUI:Tap("Misc")
+
+Misc:Toggle("Dodge No Cooldown",false,function(value)
 _G.nododgecool = value
 end)
-Misc:addToggle("Inf Stamina",false,function(value)
+Misc:Toggle("Inf ABIlITY", false, function(vu)
+	InfAbility = vu
+end)
+
+spawn(function()
+	while wait() do
+		if InfAbility then
+			InfAb()
+		end
+	end
+end)
+
+function InfAb()
+	if InfAbility then
+		if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Agility") then
+			local inf = Instance.new("ParticleEmitter")
+			inf.Acceleration = Vector3.new(0,0,0)
+			inf.Archivable = true
+			inf.Drag = 20
+			inf.EmissionDirection = Enum.NormalId.Top
+			inf.Enabled = true
+			inf.Lifetime = NumberRange.new(0.2,0.2)
+			inf.LightInfluence = 0
+			inf.LockedToPart = true
+			inf.Name = "Agility"
+			inf.Rate = 500
+			local numberKeypoints2 = {
+				NumberSequenceKeypoint.new(0, 0); 
+				NumberSequenceKeypoint.new(1, 4); 
+			}
+
+			inf.Size = NumberSequence.new(numberKeypoints2)
+			inf.RotSpeed = NumberRange.new(999, 9999)
+			inf.Rotation = NumberRange.new(0, 0)
+			inf.Speed = NumberRange.new(30, 30)
+			inf.SpreadAngle = Vector2.new(360,360)
+			inf.Texture = "rbxassetid://243098098"
+			inf.VelocityInheritance = 0
+			inf.ZOffset = 2
+			inf.Transparency = NumberSequence.new(0)
+			inf.Color = ColorSequence.new(Color3.fromRGB(0, 255, 255),Color3.fromRGB(0, 255, 255))
+			inf.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+		end
+	else
+		if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Agility") then
+			game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Agility"):Destroy()
+		end
+	end
+end
+Misc:Toggle("Inf Stamina",false,function(value)
 InfinitsEnergy = value
 originalstam = LocalPlayer.Character.Energy.Value
 end)
-Misc:addToggle("Invisble Mob",false,function(value)
+Misc:Toggle("Invisble Mob",false,function(value)
     _G.inv = value
     while _G.inv do wait()
         pcall(function()
@@ -1342,7 +1364,7 @@ end
 end)
 end
 end)
-Misc:addToggle("Invisble My Character",false,function(value)
+Misc:Toggle("Invisble My Character",false,function(value)
     _G.invme = value
     while _G.invme do wait()
         pcall(function()
@@ -1374,9 +1396,9 @@ end)
 
 
 
+Misc:Line()
 
-
-Misc:addButton("Anti-AFK", function()
+Misc:Button("Anti-AFK", function()
     local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 		vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
@@ -1384,7 +1406,7 @@ Misc:addButton("Anti-AFK", function()
 		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 end)
-Misc:addButton("Server Hop", function()
+Misc:Button("Server Hop", function()
         local PlaceID = game.PlaceId
     local AllIDs = {}
     local foundAnything = ""
@@ -1458,11 +1480,12 @@ Misc:addButton("Server Hop", function()
 
     Teleport()
 end)
-Misc:addButton("Rejoin Server", function()
+Misc:Button("Rejoin Server", function()
 	game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").localPlayer)
 end)
-local page = venyx:addPage("Teleport", 6022668945)
-local Teleport = page:addSection("Teleport")
+
+
+local Teleport = GUI:Tap("Teleport")
 function tweenteleoirtzz(XXXXx)
           local Distance = (Vector3.new(XXXXx) - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
     local Speed = 150
@@ -1476,158 +1499,157 @@ function tweenteleoirtzz(XXXXx)
     _G.NoClip = false
 end
 if OldWorld then
-   Teleport:addButton("Start Island",function()
+   Teleport:Button("Start Island",function()
       tweenteleoirtzz(CFrame.new(1071.2832, 16.3085976, 1426.86792))
    end)
-   Teleport:addButton("Marine Start",function()
+   Teleport:Button("Marine Start",function()
      tweenteleoirtzz(CFrame.new(-2573.3374, 6.88881969, 2046.99817))
    end)
-   Teleport:addButton("Middle Town",function()
+   Teleport:Button("Middle Town",function()
      tweenteleoirtzz(CFrame.new(-655.824158, 7.88708115, 1436.67908))
    end)
-   Teleport:addButton("Jungle",function()
+   Teleport:Button("Jungle",function()
      tweenteleoirtzz(CFrame.new(-1249.77222, 11.8870859, 341.356476))
    end)
-   Teleport:addButton("Pirate Village",function()
+   Teleport:Button("Pirate Village",function()
      tweenteleoirtzz(CFrame.new(-1122.34998, 4.78708982, 3855.91992))
    end)
-   Teleport:addButton("Desert",function()
+   Teleport:Button("Desert",function()
      tweenteleoirtzz(CFrame.new(1094.14587, 6.47350502, 4192.88721))
    end)
-   Teleport:addButton("Frozen Village",function()
+   Teleport:Button("Frozen Village",function()
      tweenteleoirtzz(CFrame.new(1198.00928, 27.0074959, -1211.73376))
    end)
-   Teleport:addButton("MarineFord",function()
+   Teleport:Button("MarineFord",function()
      tweenteleoirtzz(CFrame.new(-4505.375, 20.687294, 4260.55908))
    end)
-   Teleport:addButton("Colosseum",function()
+   Teleport:Button("Colosseum",function()
      tweenteleoirtzz(CFrame.new(-1428.35474, 7.38933945, -3014.37305))
    end)
-   Teleport:addButton("Sky 1st Floor",function()
+   Teleport:Button("Sky 1st Floor",function()
      tweenteleoirtzz(CFrame.new(-4970.21875, 717.707275, -2622.35449))
    end)
-   Teleport:addButton("Sky 2st Floor",function()
+   Teleport:Button("Sky 2st Floor",function()
      tweenteleoirtzz(CFrame.new(-4813.0249, 903.708557, -1912.69055))
    end)
-   Teleport:addButton("Sky 3st Floor",function()
+   Teleport:Button("Sky 3st Floor",function()
      tweenteleoirtzz(CFrame.new(-7952.31006, 5545.52832, -320.704956))
    end)
-   Teleport:addButton("Prison",function()
+   Teleport:Button("Prison",function()
      tweenteleoirtzz(CFrame.new(4854.16455, 5.68742752, 740.194641))
    end)
-   Teleport:addButton("Magma Village",function()
+   Teleport:Button("Magma Village",function()
      tweenteleoirtzz(CFrame.new(-5231.75879, 8.61593437, 8467.87695))
    end)
-   Teleport:addButton("UndeyWater City",function()
+   Teleport:Button("UndeyWater City",function()
      tweenteleoirtzz(CFrame.new(61163.8516, 11.7796879, 1819.78418))
    end)
-   Teleport:addButton("Fountain City",function()
+   Teleport:Button("Fountain City",function()
      tweenteleoirtzz(CFrame.new(5132.7124, 4.53632832, 4037.8562))
    end)
-   Teleport:addButton("House Cyborg's",function()
+   Teleport:Button("House Cyborg's",function()
      tweenteleoirtzz(CFrame.new(6262.72559, 71.3003616, 3998.23047))
    end)
-   Teleport:addButton("Shank's Room",function()
+   Teleport:Button("Shank's Room",function()
      tweenteleoirtzz(CFrame.new(-1442.16553, 29.8788261, -28.3547478))
    end)
-   Teleport:addButton("Mob Island",function()
+   Teleport:Button("Mob Island",function()
      tweenteleoirtzz(CFrame.new(-2850.20068, 7.39224768, 5354.99268))
    end)
 end
 if Sea2 then
-   Teleport:addButton("Dock",function()
+   Teleport:Button("Dock",function()
      tweenteleoirtzz(CFrame.new(82.9490662, 18.0710983, 2834.98779))
    end)
-   Teleport:addButton("Kingdom of Rose",function()
+   Teleport:Button("Kingdom of Rose",function()
      tweenteleoirtzz(CFrame.new(-394.983521, 118.503128, 1245.8446))
    end)
-   Teleport:addButton("Mansion",function()
+   Teleport:Button("Mansion",function()
      tweenteleoirtzz(CFrame.new(-390.096313, 331.886475, 673.464966))
    end)
-   Teleport:addButton("Flamingo Room",function()
+   Teleport:Button("Flamingo Room",function()
      tweenteleoirtzz(CFrame.new(2302.19019, 15.1778421, 663.811035))
    end)
-   Teleport:addButton("Green Zone",function()
+   Teleport:Button("Green Zone",function()
      tweenteleoirtzz(CFrame.new(-2372.14697, 72.9919434, -3166.51416))
    end)
-   Teleport:addButton("Cafe",function()
+   Teleport:Button("Cafe",function()
      tweenteleoirtzz(CFrame.new(-385.250916, 73.0458984, 297.388397))
    end)
-   Teleport:addButton("Factroy",function()
+   Teleport:Button("Factroy",function()
      tweenteleoirtzz(CFrame.new(430.42569, 210.019623, -432.504791))
    end)
-   Teleport:addButton("Colosseum",function()
+   Teleport:Button("Colosseum",function()
      tweenteleoirtzz(CFrame.new(-1836.58191, 44.5890656, 1360.30652))
    end)
-   Teleport:addButton("GraveIsland",function()
+   Teleport:Button("GraveIsland",function()
      tweenteleoirtzz(CFrame.new(-5411.47607, 48.8234024, -721.272522))
    end)
-   Teleport:addButton("Snow Mountain",function()
+   Teleport:Button("Snow Mountain",function()
      tweenteleoirtzz(CFrame.new(511.825226, 401.765198, -5380.396))
    end)
-   Teleport:addButton("Cold Island",function()
+   Teleport:Button("Cold Island",function()
      tweenteleoirtzz(CFrame.new(-6026.96484, 14.7461271, -5071.96338))
    end)
-   Teleport:addButton("Hot Island",function()
+   Teleport:Button("Hot Island",function()
      tweenteleoirtzz(CFrame.new(-5478.39209, 15.9775667, -5246.9126))
    end)
-   Teleport:addButton("Cursed Ship",function()
+   Teleport:Button("Cursed Ship",function()
      tweenteleoirtzz(CFrame.new(902.059143, 124.752518, 33071.8125))
    end)
-   Teleport:addButton("IceCastle",function()
+   Teleport:Button("IceCastle",function()
      tweenteleoirtzz(CFrame.new(5400.40381, 28.21698, -6236.99219))
    end)
-   Teleport:addButton("Forgotten Island",function()
+   Teleport:Button("Forgotten Island",function()
      tweenteleoirtzz(CFrame.new(-3043.31543, 238.881271, -10191.5791))
    end)
-   Teleport:addButton("Usoapp Island",function()
+   Teleport:Button("Usoapp Island",function()
      tweenteleoirtzz(CFrame.new(4748.78857, 8.35370827, 2849.57959))
    end)
-   Teleport:addButton("Minisky Island",function()
+   Teleport:Button("Minisky Island",function()
      tweenteleoirtzz(CFrame.new(-260.358917, 49325.7031, -35259.3008))
    end)
 end
 if ThreeWorld then
-   Teleport:addButton("Port Towen",function()
+   Teleport:Button("Port Towen",function()
      tweenteleoirtzz(CFrame.new(-610.309692, 57.8323097, 6436.33594, 1, 0, 0, 0, 1, 0, 0, 0, 1))
    end)
-   Teleport:addButton("Hydra Island",function()
+   Teleport:Button("Hydra Island",function()
      tweenteleoirtzz(CFrame.new(5229.99561, 603.916565, 345.154022, -0.137452736, 6.26227887e-08, -0.990508318, 5.81512971e-08, 1, 5.51532295e-08, 0.990508318, -5.00183823e-08, -0.137452736))
    end)
-   Teleport:addButton("Great Tree",function()
+   Teleport:Button("Great Tree",function()
      tweenteleoirtzz(CFrame.new(2174.94873, 28.7312393, -6728.83154, 0.864815354, 2.51030592e-08, -0.502090037, -5.24263299e-09, 1, 4.09670555e-08, 0.502090037, -3.27966632e-08, 0.864815354))
    end)
-   Teleport:addButton("Castle on the Sea",function()
+   Teleport:Button("Castle on the Sea",function()
      tweenteleoirtzz(CFrame.new(-5477.62842, 313.794739, -2808.4585, 0.914748192, -2.40542199e-08, 0.404024392, -8.97737973e-09, 1, 7.98621613e-08, -0.404024392, -7.66808483e-08, 0.914748192))
    end)
-   Teleport:addButton("Floating Turtle",function()
+   Teleport:Button("Floating Turtle",function()
      tweenteleoirtzz(CFrame.new(-10919.2998, 331.788452, -8637.57227, 0.606543362, 0, -0.795050383, -0, 1, -0, 0.795050383, 0, 0.606543362))
    end)
-   Teleport:addButton("Mansion",function()
+   Teleport:Button("Mansion",function()
      tweenteleoirtzz(CFrame.new(-12553.8125, 332.403961, -7621.91748, -0.999466479, 2.33264661e-08, 0.0326608531, 2.2023519e-08, 1, -4.02529707e-08, -0.0326608531, -3.95121873e-08, -0.999466479))
    end)
-   Teleport:addButton("Secret Temple",function()
+   Teleport:Button("Secret Temple",function()
      tweenteleoirtzz(CFrame.new(5217.35693, 6.56511116, 1100.88159, 0.00408430398, 7.00437894e-08, -0.999991655, 1.42367229e-08, 1, 7.01025229e-08, 0.999991655, -1.45229242e-08, 0.00408430398))
    end)
-   Teleport:addButton("Friendly Arena",function()
+   Teleport:Button("Friendly Arena",function()
      tweenteleoirtzz(CFrame.new(5220.28955, 72.8193436, -1450.86304, 1, 0, 0, 0, 1, 0, 0, 0, 1))
    end)
-   Teleport:addButton("Beautiful Pirate Domain",function()
+   Teleport:Button("Beautiful Pirate Domain",function()
      tweenteleoirtzz(CFrame.new(5310.8095703125, 21.594484329224, 129.39053344727))
    end)
-   Teleport:addButton("Haunted Castle",function()
+   Teleport:Button("Haunted Castle",function()
      tweenteleoirtzz(CFrame.new(-9511.00586, 142.130615, 5535.36768, 0.999689162, -3.71522124e-09, -0.024930628, 2.49858245e-09, 1, -4.88321206e-08, 0.024930628, 4.87546536e-08, 0.999689162))
    end)
-   Teleport:addButton("Sea Of Treats",function()
+   Teleport:Button("Sea Of Treats",function()
      tweenteleoirtzz(CFrame.new(-2098.6748, 192.611877, -10218.8779, -0.823644459, -8.53733724e-08, -0.567106485, -6.24219822e-08, 1, -5.9882673e-08, 0.567106485, -1.39221221e-08, -0.823644459))
    end)
-   Teleport:addButton("Sea Of Treats2",function()
+   Teleport:Button("Sea Of Treats2",function()
      tweenteleoirtzz(CFrame.new(-921.426575, 56.2765846, -10849.9609, -0.779289186, 2.26340795e-08, 0.626664519, 8.58123173e-08, 1, 7.05936358e-08, -0.626664519, 1.08788392e-07, -0.779289186))
    end)
 end
-local page = venyx:addPage("Auto-Raid", 6031225816)
-local Raid = page:addSection("Auto-Raid")
-Raid:addToggle(" Kill Aura [ Raid ] ",false,function(value)
+local Raid = GUI:Tap("Auto Raid")
+Raid:Toggle(" Kill Aura [ Raid ] ",false,function(value)
 _G.killaurxaxx = value
 while _G.killaurxaxx do wait()
    pcall(function()
@@ -1641,7 +1663,7 @@ end
 end)
 
 if Sea2 then
-   Raid:addToggle(" Auto Next Island [ Raid ]",false,function(value)
+   Raid:Toggle(" Auto Next Island [ Raid ]",false,function(value)
     _G.NextIsland = value
     while _G.NextIsland do wait()
        pcall(function()
@@ -1662,7 +1684,7 @@ if Sea2 then
     end)
 end
 if ThreeWorld then
-   Raid:addToggle(" Auto Next Island [ Raid ]",false,function(value)
+   Raid:Toggle(" Auto Next Island [ Raid ]",false,function(value)
     _G.NextIsland = value
     while _G.NextIsland do wait()
        pcall(function()
@@ -1683,27 +1705,27 @@ if ThreeWorld then
     end)
 end
 if Sea2 then
-   Raid:addButton("Teleport to Lab",false,function()
+   Raid:Button("Teleport to Lab",false,function()
    tweenteleoirtzz(CFrame.new(-6438.73535, 250.645355, -4501.50684))
    end)
 end
 if ThreeWorld then
-   Raid:addButton("Teleport to Lab",false,function()
+   Raid:Button("Teleport to Lab",false,function()
    tweenteleoirtzz(CFrame.new(-5017.40869, 314.844055, -2823.0127, -0.925743818, 4.48217499e-08, -0.378151238, 4.55503146e-09, 1, 1.07377559e-07, 0.378151238, 9.7681621e-08, -0.925743818))
    end)
 end
-local page = venyx:addPage("Player", 6034684949)
-local ZXXZZ = page:addSection("Player")
+
+local ZXXZZ = GUI:Tap("Player")
 
 ply = {}
 for i,v in pairs(game.Players:GetPlayers()) do
    table.insert(ply, v.Name)
 end
-local addDropdown = ZXXZZ:addDropdown("Select Player", ply, function(list)
+local addDropdown = ZXXZZ:Dropdown("Select Player", ply, function(list)
 dinoply = list
 end)
 
-ZXXZZ:addButton("Refrsh Player", function()
+ZXXZZ:Button("Refrsh Player", function()
 	PlayerName = {}
 	Player:Clear()
 	for i,v in pairs(game.Players:GetChildren()) do  
@@ -1711,11 +1733,11 @@ ZXXZZ:addButton("Refrsh Player", function()
 	end
 end)
 
-ZXXZZ:addButton("Teleport To Player", function()
+ZXXZZ:Button("Teleport To Player", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[dinoply].Character.HumanoidRootPart.CFrame
 end)
 
-ZXXZZ:addButton("Auto Bounty [ Gun Only! ]", function(State)
+ZXXZZ:Button("Auto Bounty [ Gun Only! ]", function(State)
 _G.RQIO = State
 while _G.RQIO do wait()
    pcall(function()
@@ -1765,7 +1787,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
  end)
     
-ZXXZZ:addButton("Server Hop", function(State)
+ZXXZZ:Button("Server Hop", function(State)
         local PlaceID = game.PlaceId
     local AllIDs = {}
     local foundAnything = ""
