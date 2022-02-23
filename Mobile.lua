@@ -1,30 +1,4 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Patskorn/GUI/main/Copy-SynapOver.lua"))()
-
-
-local DINOHUB = Instance.new("ScreenGui")
-local OPENCLOSE = Instance.new("TextButton")
-
-
-DINOHUB.Name = "AT Hub"
-DINOHUB.Parent = game.CoreGui
-DINOHUB.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-OPENCLOSE.Name = "OPENCLOSE"
-OPENCLOSE.Parent = DINOHUB
-OPENCLOSE.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-OPENCLOSE.BorderSizePixel = 0
-OPENCLOSE.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
-OPENCLOSE.Size = UDim2.new(0.0447916649, 0, 0.0845824406, 0)
-OPENCLOSE.Font = Enum.Font.DenkOne
-OPENCLOSE.Text = "CLOSE"
-OPENCLOSE.TextColor3 = Color3.fromRGB(255, 255, 255)
-OPENCLOSE.TextScaled = true
-OPENCLOSE.TextSize = 14.000
-OPENCLOSE.TextWrapped = true
-OPENCLOSE.MouseButton1Click:Connect(function()
-    game.CoreGui:FindFirstChild("POUI").Enabled = not game.CoreGui:FindFirstChild("POUI").Enabled
-end)
-
 local GUI = library:new("Attack Hub","[ Mobile ]")
 
 local OldWorld = false
