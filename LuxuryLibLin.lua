@@ -2773,7 +2773,7 @@ function Library:CreateWindow(WindowTitle,MobileMode)
     end;
     
     Library:Connection(InputService.InputBegan, function(Input, NotTyping)
-        if tostring(Input.KeyCode) == tostring(Enum.KeyCode.Delete) then
+        if tostring(Input.KeyCode) == tostring(Enum.KeyCode.LeftControl) then
             Library:Toggle()
         end;
     end);
